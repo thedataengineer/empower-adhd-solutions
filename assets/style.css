@@ -378,6 +378,81 @@ p + p { margin-top: 0.9rem; }
 .card.path .tag { align-self: flex-start; }
 .card.path .btn { margin-top: auto; align-self: flex-start; }
 
+/* ---------- Command palette ---------- */
+.cmdk-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.cmdk-hint:hover { border-color: var(--accent); color: var(--text); }
+@media (max-width: 980px) { .cmdk-hint { display: none; } }
+
+.cmdk-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 5, 8, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12vh 1rem 0;
+}
+.cmdk-overlay[hidden] { display: none; }
+.cmdk {
+  width: min(560px, 100%);
+  background: #0d1219;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(77, 169, 224, 0.15);
+  overflow: hidden;
+}
+.cmdk input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.02rem;
+  padding: 0.95rem 1.1rem;
+}
+.cmdk input:focus { outline: none; }
+.cmdk input::placeholder { color: var(--muted); }
+.cmdk-list { max-height: 330px; overflow-y: auto; padding: 0.45rem; }
+.cmdk-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.62rem 0.9rem;
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.cmdk-item .k {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.cmdk-item.sel { background: rgba(77, 169, 224, 0.16); }
+.cmdk-item.sel .k { color: var(--accent-3); }
+.cmdk-empty { padding: 1rem 1.1rem 1.2rem; color: var(--muted); font-size: 0.92rem; }
+
+.footer-geek { margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+.footer-geek a { color: var(--accent); }
+
 /* ---------- Tabs ---------- */
 .tabs {
   display: flex;
@@ -559,4 +634,5 @@ footer a:hover { color: var(--accent); }
   .reveal { opacity: 1; transform: none; transition: none; }
   .card, .btn, .socials a { transition: none; }
   .cursor { animation: none; }
+  body, .hero .logo-lg, h2.grad, .page-title h1 { animation: none; }
 }
