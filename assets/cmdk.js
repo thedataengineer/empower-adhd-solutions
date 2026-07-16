@@ -1,5 +1,6 @@
 (function () {
   var REPO = 'https://github.com/thedataengineer/empower-adhd-solutions';
+  var PRE = window.location.pathname.indexOf('/blog/') !== -1 ? '../' : '';
   var items = [
     { l: 'Home', h: 'index.html', k: 'page', q: 'home main landing' },
     { l: 'Start Here', h: 'start-here.html', k: 'page', q: 'start paths diagnosed parents relationships' },
@@ -61,7 +62,9 @@
   }
   function close() { overlay.hidden = true; }
   function go(i) {
-    if (filtered[i]) window.location.href = filtered[i].h;
+    if (!filtered[i]) return;
+    var h = filtered[i].h;
+    window.location.href = /^(https?:|mailto:)/.test(h) ? h : PRE + h;
   }
 
   input.addEventListener('input', function () { filter(input.value); });
